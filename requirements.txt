@@ -3,4 +3,6 @@ scikit-learn
 pytest
 flake8
 coverage
+flask
+
 
