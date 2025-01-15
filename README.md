@@ -12,6 +12,7 @@ This project demonstrates a complete workflow for developing, testing, and deplo
 5. [CI/CD Pipeline](#cicd-pipeline)
 6. [API Usage](#api-usage)
 7. [Technologies Used](#technologies-used)
+8. [License](#license)
 
 ---
 
@@ -160,6 +161,12 @@ The GitHub Actions pipeline automates the following steps:
 
 ---
 
+## **License**
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
 ### **Next Steps**
 1. Explore AI model testing techniques:
    - Functional testing.
@@ -169,3 +176,6 @@ The GitHub Actions pipeline automates the following steps:
 3. Integrate notifications into the CI/CD pipeline.
 
 ---
+
+
+
