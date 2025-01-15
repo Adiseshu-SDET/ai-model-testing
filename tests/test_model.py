@@ -11,4 +11,4 @@ def test_data_loading():
 def test_model_accuracy():
     data = load_and_preprocess_data()
     model, accuracy = train_model(data)
-    assert accuracy >= 75, "Model accuracy is below 75%"
+    assert accuracy >= 0.75, "Model accuracy is below 75%"
