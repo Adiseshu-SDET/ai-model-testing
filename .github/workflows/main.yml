@@ -26,5 +26,11 @@ jobs:
       - name: Add project root to PYTHONPATH
         run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
-      - name: Run PyTest
-        run: pytest tests/
+      - name: Run PyTest and generate report
+        run: pytest --junitxml=report.xml
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-report
+          path: report.xml
