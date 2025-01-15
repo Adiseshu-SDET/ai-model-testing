@@ -23,5 +23,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt  # Install required libraries
 
+      - name: Run Flake8
+        run: flake8
+
       - name: Run PyTest
         run: pytest tests/  # Run PyTest on the tests folder
+        
+        
+
