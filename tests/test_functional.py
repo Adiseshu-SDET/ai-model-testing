@@ -12,11 +12,11 @@ from main import load_and_preprocess_data, train_model
 def model():
     # Load data and train the model
     data = load_and_preprocess_data()
-    model, _ = train_model(data)
+    model, _ = train_model(data)  # Unpack model and ignore accuracy
     return model
 
 def test_valid_input(model):
-    # Valid input data
+    # Match the training features
     input_data = pd.DataFrame([{
         "Pclass": 1,
         "Sex": 1,
@@ -24,10 +24,12 @@ def test_valid_input(model):
         "SibSp": 0,
         "Parch": 0,
         "Fare": 100,
-        "Embarked": 1
+        "Embarked_1": 1,
+        "Embarked_2": 0
     }])
     prediction = model.predict(input_data)
     assert prediction in [[0], [1]], "Prediction should be 0 or 1"
+
 
 def test_invalid_input(model):
     # Invalid input data (missing columns)
@@ -40,15 +42,16 @@ def test_invalid_input(model):
         model.predict(input_data)
 
 def test_edge_case_input(model):
-    # Edge case: Minimum and maximum values
+    # Ensure input matches the training features
     input_data = pd.DataFrame([{
         "Pclass": 3,
-        "Sex": 0,
-        "Age": 1,      # Minimum age
-        "SibSp": 8,    # Maximum siblings/spouse
-        "Parch": 8,    # Maximum parents/children
-        "Fare": 512.3, # High fare value
-        "Embarked": 3  # Unusual embarkation
+        "Age": 1,       # Minimum age
+        "SibSp": 8,     # Maximum siblings/spouse
+        "Parch": 8,     # Maximum parents/children
+        "Fare": 512.3,  # High fare value
+        "Sex_male": 0,  # One-hot encoded column
+        "Embarked_Q": 0,  # One-hot encoded column
+        "Embarked_S": 1   # One-hot encoded column
     }])
     prediction = model.predict(input_data)
     assert prediction in [[0], [1]], "Prediction should be 0 or 1"
